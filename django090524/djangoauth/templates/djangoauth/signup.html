@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+    {% comment %} if form object is send {% endcomment %}
+    {% if form %}
+    <form action="" method='POST'>
+        {% csrf_token %}
+        {% for field in form %}
+        {{field.label_tag}} {{field}} {{field.errors |striptags}}<br><br>
+        {% endfor %}
+        <input type='submit' value='Submit'>
+    </form> 
+    {% endif %}
+    
+    <br>
+    <button><a href='{% url "login" %}'>Login</a></button>
+
+    {% comment %} if user is created {% endcomment %}
+    {% if messages %}
+    {% for msg in messages %}
+    <button {% if msg.tags %} class="{{msg.tags}}" {% endif %}> {{msg}} </button>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

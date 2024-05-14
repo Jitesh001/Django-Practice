@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+ <h1>Welcome {{user}} Home Page after Login</h1>
+
+    <!-- checking permssions for user to delete record from Post Model -->
+    {% if perms.djangoauth.delete_post %}
+    <button>Delete Post</button>
+    {% endif %}
+ 
+<button><a href='{% url "logout" %}'>logout</a></button>
+</body>
+</html>
